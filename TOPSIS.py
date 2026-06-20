@@ -1,8 +1,10 @@
+
+
 import numpy as np
 import pandas as pd
 
 # =========================
-# 1. Alternatives
+# Alternatives and Criteria
 # =========================
 
 cars = [
@@ -26,6 +28,21 @@ criteria = [
 ]
 
 # =========================
+# Raw Decision Matrix X
+# =========================
+
+X = np.array([
+    [41000, 4.8, 196, 566, 400, 8, 111, 9],
+    [49000, 6.4, 204, 1028, 453, 8, 111, 9],
+    [37500, 5.5, 236, 1070, 794, 9, 129, 9],
+    [40150, 4.5, 220, 575, 0, 10, 31, 5],
+    [57600, 9.0, 247, 613, 1580, 5, 212, 8],
+    [42950, 6.2, 219, 1595, 680, 7, 145, 9]
+], dtype=float)
+
+
+
+# =========================
 # 2. Raw decision matrix
 # =========================
 # Cost: CAD
@@ -47,20 +64,11 @@ criteria = [
 # 8 = AWD
 # 5 = FWD only
 
-X = np.array([
-    [41000, 4.8, 196, 566, 400, 8, 111, 9],      # Toyota Prius Hybrid
-    [49000, 6.4, 204, 1028, 453, 8, 111, 9],     # Honda CR-V Hybrid, 36.3 ft3 ≈ 1028 L
-    [37500, 5.5, 236, 1070, 794, 9, 129, 9],     # Toyota RAV4 Hybrid
-    [40150, 4.5, 220, 575, 0, 10, 31, 5],        # Prius Plug-in SE, Utility N/A = 0
-    [57600, 9.0, 247, 613, 1580, 5, 212, 8],     # Volvo XC60 B5 Mild Hybrid
-    [42950, 6.2, 219, 1595, 680, 7, 145, 9]      # Mazda CX-50 Hybrid
-])
-
 # =========================
-# 3. AHP weights
+# AHP Weights
+# Replace this with your final AHP weights
+# Order must match criteria
 # =========================
-# 这里先放你前面那组 AHP 权重
-# 顺序必须和 criteria 一致
 
 weights = np.array([
     0.2625,   # Cost
@@ -73,14 +81,13 @@ weights = np.array([
     0.1025    # Drivability
 ])
 
-# 保证权重加起来等于 1
 weights = weights / weights.sum()
 
 # =========================
-# 4. Criteria direction
+# Criteria Direction
+# 1 = benefit, larger is better
+# -1 = cost, smaller is better
 # =========================
-# 1 = benefit criterion, larger is better
-# -1 = cost criterion, smaller is better
 
 directions = np.array([
     -1,   # Cost
@@ -94,51 +101,119 @@ directions = np.array([
 ])
 
 # =========================
-# 5. Vector normalization
+# Display Raw Matrix
 # =========================
 
-X_norm = X / np.sqrt((X ** 2).sum(axis=0))
+df_X = pd.DataFrame(X, index=cars, columns=criteria)
 
-# =========================
-# 6. Weighted normalized matrix
-# =========================
+print("\nOriginal Decision Matrix X:")
+print(df_X.round(4))
 
-V = X_norm * weights
 
-# =========================
-# 7. Ideal best and ideal worst
-# =========================
+# ============================================================
+# Step 1: Normalize
+# r_ij = x_ij / sqrt(sum(x_ij^2))
+# ============================================================
 
-ideal_best = np.where(directions == 1, V.max(axis=0), V.min(axis=0))
-ideal_worst = np.where(directions == 1, V.min(axis=0), V.max(axis=0))
+denominator = np.sqrt((X ** 2).sum(axis=0))
+R = X / denominator
 
-# =========================
-# 8. Distance to ideal best and worst
-# =========================
+df_R = pd.DataFrame(R, index=cars, columns=criteria)
 
-distance_best = np.sqrt(((V - ideal_best) ** 2).sum(axis=1))
-distance_worst = np.sqrt(((V - ideal_worst) ** 2).sum(axis=1))
+print("\nStep 1: Normalized Matrix R")
+print(df_R.round(4))
 
-# =========================
-# 9. TOPSIS score
-# =========================
 
-score = distance_worst / (distance_best + distance_worst)
+# ============================================================
+# Step 2: Weighted Normalized Matrix
+# v_ij = w_j * r_ij
+# ============================================================
 
-# =========================
-# 10. Output ranking
-# =========================
+V = R * weights
 
-result = pd.DataFrame({
-    "Car": cars,
-    "TOPSIS Score": score
+df_weights = pd.DataFrame({
+    "Criteria": criteria,
+    "AHP Weight": weights
 })
 
-result["Rank"] = result["TOPSIS Score"].rank(
+df_V = pd.DataFrame(V, index=cars, columns=criteria)
+
+print("\nStep 2.1: AHP Weights")
+print(df_weights.round(4))
+
+print("\nStep 2.2: Weighted Normalized Matrix V")
+print(df_V.round(4))
+
+
+# ============================================================
+# Step 3: Ideal Solutions
+# For benefit criteria: A+ = max, A- = min
+# For cost criteria:    A+ = min, A- = max
+# ============================================================
+
+A_plus = np.where(directions == 1, V.max(axis=0), V.min(axis=0))
+A_minus = np.where(directions == 1, V.min(axis=0), V.max(axis=0))
+
+df_ideal = pd.DataFrame({
+    "Criteria": criteria,
+    "Type": ["Benefit" if d == 1 else "Cost" for d in directions],
+    "A+ Positive Ideal": A_plus,
+    "A- Negative Ideal": A_minus
+})
+
+print("\nStep 3: Ideal Solutions A+ and A-")
+print(df_ideal.round(4))
+
+
+# ============================================================
+# Step 4: Separation Distance
+# S+ = distance to A+
+# S- = distance to A-
+# ============================================================
+
+S_plus = np.sqrt(((V - A_plus) ** 2).sum(axis=1))
+S_minus = np.sqrt(((V - A_minus) ** 2).sum(axis=1))
+
+df_distance = pd.DataFrame({
+    "Car": cars,
+    "S+ Distance to A+": S_plus,
+    "S- Distance to A-": S_minus
+})
+
+print("\nStep 4: Separation Distances")
+print(df_distance.round(4))
+
+
+# ============================================================
+# Step 5: Similarity Score
+# C* = S- / (S+ + S-)
+# Higher C* = better
+# ============================================================
+
+C_star = S_minus / (S_plus + S_minus)
+
+df_score = pd.DataFrame({
+    "Car": cars,
+    "S+": S_plus,
+    "S-": S_minus,
+    "C* TOPSIS Score": C_star
+})
+
+print("\nStep 5: Similarity Score C*")
+print(df_score.round(4))
+
+
+# ============================================================
+# Step 6: Rank
+# Rank alternatives by C* in descending order
+# ============================================================
+
+df_score["Rank"] = df_score["C* TOPSIS Score"].rank(
     ascending=False,
     method="min"
 ).astype(int)
 
-result = result.sort_values("TOPSIS Score", ascending=False)
+final_result = df_score.sort_values("C* TOPSIS Score", ascending=False)
 
-print(result.round(4))
+print("\nStep 6: Final TOPSIS Ranking")
+print(final_result.round(4))
