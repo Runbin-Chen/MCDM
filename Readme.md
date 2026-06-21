@@ -31,7 +31,7 @@ the consistency of the AHP pairwise comparison matrix is **acceptable**.
 
 
 
-# TOPSIS Analysis Results
+# Updated TOPSIS Analysis Results
 
 ## Original Decision Matrix $X$
 
@@ -63,14 +63,14 @@ the consistency of the AHP pairwise comparison matrix is **acceptable**.
 
 | Criteria             | AHP Weight |
 | -------------------- | ---------: |
-| Cost                 |     0.2626 |
-| Fuel Efficiency      |     0.1597 |
-| Performance          |     0.0834 |
-| Practicality         |     0.1693 |
-| Utility              |     0.0930 |
-| Warranty             |     0.0864 |
-| Environmental Impact |     0.0430 |
-| Drivability          |     0.1025 |
+| Cost                 |     0.2236 |
+| Fuel Efficiency      |     0.2407 |
+| Performance          |     0.0680 |
+| Practicality         |     0.1441 |
+| Utility              |     0.0642 |
+| Warranty             |     0.1114 |
+| Environmental Impact |     0.0540 |
+| Drivability          |     0.0940 |
 
 ---
 
@@ -78,12 +78,12 @@ the consistency of the AHP pairwise comparison matrix is **acceptable**.
 
 | Car                       |   Cost | Fuel Efficiency | Performance | Practicality | Utility | Warranty | Environmental Impact | Drivability |
 | ------------------------- | -----: | --------------: | ----------: | -----------: | ------: | -------: | -------------------: | ----------: |
-| Toyota Prius Hybrid       | 0.0972 |          0.0501 |      0.0302 |       0.0399 |  0.0187 |   0.0353 |               0.0145 |      0.0454 |
-| Honda CR-V Hybrid         | 0.1162 |          0.0668 |      0.0314 |       0.0725 |  0.0212 |   0.0353 |               0.0145 |      0.0454 |
-| Toyota RAV4 LE AWD Hybrid | 0.0889 |          0.0574 |      0.0364 |       0.0754 |  0.0371 |   0.0397 |               0.0169 |      0.0454 |
-| Toyota Prius Plug-in SE   | 0.0952 |          0.0470 |      0.0339 |       0.0405 |  0.0000 |   0.0442 |               0.0041 |      0.0252 |
-| Volvo XC60 B5 Mild Hybrid | 0.1366 |          0.0940 |      0.0381 |       0.0432 |  0.0739 |   0.0221 |               0.0277 |      0.0404 |
-| Mazda CX-50 Hybrid        | 0.1018 |          0.0647 |      0.0337 |       0.1124 |  0.0318 |   0.0309 |               0.0190 |      0.0454 |
+| Toyota Prius Hybrid       | 0.0828 |          0.0755 |      0.0246 |       0.0339 |  0.0129 |   0.0455 |               0.0182 |      0.0416 |
+| Honda CR-V Hybrid         | 0.0989 |          0.1007 |      0.0256 |       0.0617 |  0.0146 |   0.0455 |               0.0182 |      0.0416 |
+| Toyota RAV4 LE AWD Hybrid | 0.0757 |          0.0866 |      0.0296 |       0.0642 |  0.0256 |   0.0512 |               0.0212 |      0.0416 |
+| Toyota Prius Plug-in SE   | 0.0811 |          0.0708 |      0.0276 |       0.0345 |  0.0000 |   0.0569 |               0.0051 |      0.0231 |
+| Volvo XC60 B5 Mild Hybrid | 0.1163 |          0.1416 |      0.0310 |       0.0368 |  0.0510 |   0.0285 |               0.0348 |      0.0370 |
+| Mazda CX-50 Hybrid        | 0.0867 |          0.0976 |      0.0275 |       0.0957 |  0.0220 |   0.0398 |               0.0238 |      0.0416 |
 
 ---
 
@@ -91,14 +91,14 @@ the consistency of the AHP pairwise comparison matrix is **acceptable**.
 
 | Criteria             | Type    | $A^+$ Positive Ideal | $A^-$ Negative Ideal |
 | -------------------- | ------- | -------------------: | -------------------: |
-| Cost                 | Cost    |               0.0889 |               0.1366 |
-| Fuel Efficiency      | Cost    |               0.0470 |               0.0940 |
-| Performance          | Benefit |               0.0381 |               0.0302 |
-| Practicality         | Benefit |               0.1124 |               0.0399 |
-| Utility              | Benefit |               0.0739 |               0.0000 |
-| Warranty             | Benefit |               0.0442 |               0.0221 |
-| Environmental Impact | Cost    |               0.0041 |               0.0277 |
-| Drivability          | Benefit |               0.0454 |               0.0252 |
+| Cost                 | Cost    |               0.0757 |               0.1163 |
+| Fuel Efficiency      | Cost    |               0.0708 |               0.1416 |
+| Performance          | Benefit |               0.0310 |               0.0246 |
+| Practicality         | Benefit |               0.0957 |               0.0339 |
+| Utility              | Benefit |               0.0510 |               0.0000 |
+| Warranty             | Benefit |               0.0569 |               0.0285 |
+| Environmental Impact | Cost    |               0.0051 |               0.0348 |
+| Drivability          | Benefit |               0.0416 |               0.0231 |
 
 ---
 
@@ -106,25 +106,16 @@ the consistency of the AHP pairwise comparison matrix is **acceptable**.
 
 | Car                       | $S^+$ Distance to $A^+$ | $S^-$ Distance to $A^-$ |
 | ------------------------- | ----------------------: | ----------------------: |
-| Toyota Prius Hybrid       |                  0.0929 |                  0.0677 |
-| Honda CR-V Hybrid         |                  0.0758 |                  0.0585 |
-| Toyota RAV4 LE AWD Hybrid |                  0.0549 |                  0.0844 |
-| Toyota Prius Plug-in SE   |                  0.1053 |                  0.0706 |
-| Volvo XC60 B5 Mild Hybrid |                  0.1017 |                  0.0759 |
-| Mazda CX-50 Hybrid        |                  0.0517 |                  0.0944 |
+| Toyota Prius Hybrid       |                  0.0753 |                  0.0810 |
+| Honda CR-V Hybrid         |                  0.0652 |                  0.0622 |
+| Toyota RAV4 LE AWD Hybrid |                  0.0466 |                  0.0856 |
+| Toyota Prius Plug-in SE   |                  0.0820 |                  0.0892 |
+| Volvo XC60 B5 Mild Hybrid |                  0.1088 |                  0.0533 |
+| Mazda CX-50 Hybrid        |                  0.0483 |                  0.0878 |
 
 ---
 
 ## Step 5: Similarity Score $C^*$
-
-| Car                       |  $S^+$ |  $S^-$ | $C^*$ TOPSIS Score |
-| ------------------------- | -----: | -----: | -----------------: |
-| Toyota Prius Hybrid       | 0.0929 | 0.0677 |             0.4214 |
-| Honda CR-V Hybrid         | 0.0758 | 0.0585 |             0.4356 |
-| Toyota RAV4 LE AWD Hybrid | 0.0549 | 0.0844 |             0.6058 |
-| Toyota Prius Plug-in SE   | 0.1053 | 0.0706 |             0.4012 |
-| Volvo XC60 B5 Mild Hybrid | 0.1017 | 0.0759 |             0.4274 |
-| Mazda CX-50 Hybrid        | 0.0517 | 0.0944 |             0.6462 |
 
 The TOPSIS similarity score is calculated as:
 
@@ -132,7 +123,14 @@ $$
 C_i^* = \frac{S_i^-}{S_i^+ + S_i^-}
 $$
 
-A higher $C^*$ value means the alternative is closer to the positive ideal solution and farther from the negative ideal solution.
+| Car                       |  $S^+$ |  $S^-$ | $C^*$ TOPSIS Score |
+| ------------------------- | -----: | -----: | -----------------: |
+| Toyota Prius Hybrid       | 0.0753 | 0.0810 |             0.5182 |
+| Honda CR-V Hybrid         | 0.0652 | 0.0622 |             0.4884 |
+| Toyota RAV4 LE AWD Hybrid | 0.0466 | 0.0856 |             0.6472 |
+| Toyota Prius Plug-in SE   | 0.0820 | 0.0892 |             0.5210 |
+| Volvo XC60 B5 Mild Hybrid | 0.1088 | 0.0533 |             0.3288 |
+| Mazda CX-50 Hybrid        | 0.0483 | 0.0878 |             0.6450 |
 
 ---
 
@@ -140,19 +138,19 @@ A higher $C^*$ value means the alternative is closer to the positive ideal solut
 
 | Rank | Car                       |  $S^+$ |  $S^-$ | $C^*$ TOPSIS Score |
 | ---: | ------------------------- | -----: | -----: | -----------------: |
-|    1 | Mazda CX-50 Hybrid        | 0.0517 | 0.0944 |             0.6462 |
-|    2 | Toyota RAV4 LE AWD Hybrid | 0.0549 | 0.0844 |             0.6058 |
-|    3 | Honda CR-V Hybrid         | 0.0758 | 0.0585 |             0.4356 |
-|    4 | Volvo XC60 B5 Mild Hybrid | 0.1017 | 0.0759 |             0.4274 |
-|    5 | Toyota Prius Hybrid       | 0.0929 | 0.0677 |             0.4214 |
-|    6 | Toyota Prius Plug-in SE   | 0.1053 | 0.0706 |             0.4012 |
+|    1 | Toyota RAV4 LE AWD Hybrid | 0.0466 | 0.0856 |             0.6472 |
+|    2 | Mazda CX-50 Hybrid        | 0.0483 | 0.0878 |             0.6450 |
+|    3 | Toyota Prius Plug-in SE   | 0.0820 | 0.0892 |             0.5210 |
+|    4 | Toyota Prius Hybrid       | 0.0753 | 0.0810 |             0.5182 |
+|    5 | Honda CR-V Hybrid         | 0.0652 | 0.0622 |             0.4884 |
+|    6 | Volvo XC60 B5 Mild Hybrid | 0.1088 | 0.0533 |             0.3288 |
 
 ---
 
 ## Conclusion
 
-Based on the TOPSIS results, the **Mazda CX-50 Hybrid** ranks first with the highest similarity score of **0.6462**, followed by the **Toyota RAV4 LE AWD Hybrid** with a score of **0.6058**.
+Based on the updated AHP weights and TOPSIS calculation, the **Toyota RAV4 LE AWD Hybrid** ranks first with the highest TOPSIS score of **0.6472**. The **Mazda CX-50 Hybrid** ranks second with a very close score of **0.6450**, indicating that both vehicles perform strongly under the current evaluation framework.
 
-This means that, under the selected AHP weights and TOPSIS evaluation criteria, the Mazda CX-50 Hybrid is the closest alternative to the positive ideal solution. Its strong performance mainly comes from its high practicality score, competitive overall balance, and relatively strong utility compared with other alternatives.
+The ranking is mainly influenced by the high weights assigned to **Fuel Efficiency** and **Cost**, which are both cost-type criteria. Therefore, vehicles with lower fuel consumption and lower purchase cost receive stronger advantages. The **Toyota RAV4 LE AWD Hybrid** performs well because it has the lowest cost, strong performance, good practicality, high utility, and a strong warranty score.
 
-The Toyota RAV4 LE AWD Hybrid also performs well, especially because of its lower cost, strong performance, high utility, and good warranty score. The Toyota Prius Plug-in SE ranks last mainly because of its low utility value and lower drivability score, even though it has strong fuel efficiency and environmental performance.
+The **Volvo XC60 B5 Mild Hybrid** ranks last because it has the highest cost, the highest fuel consumption, and the highest environmental impact among the alternatives, even though it performs well in utility and performance.
