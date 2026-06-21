@@ -1,3 +1,36 @@
+## AHP Criteria Weights
+
+| Rank | Criteria             | Weight | Percentage |
+| ---: | -------------------- | -----: | ---------: |
+|    1 | Fuel Efficiency      | 0.2407 |   24.0706% |
+|    2 | Cost                 | 0.2236 |   22.3631% |
+|    3 | Practicality         | 0.1441 |   14.4143% |
+|    4 | Warranty             | 0.1114 |   11.1379% |
+|    5 | Drivability          | 0.0940 |    9.3963% |
+|    6 | Performance          | 0.0680 |    6.7976% |
+|    7 | Utility              | 0.0642 |    6.4206% |
+|    8 | Environmental Impact | 0.0540 |    5.3996% |
+
+---
+
+## Consistency Test
+
+| Indicator        |  Value |
+| ---------------- | -----: |
+| $\lambda_{\max}$ | 8.0839 |
+| CI               | 0.0120 |
+| CR               | 0.0085 |
+
+Since the consistency ratio is:
+
+$$
+CR = 0.0085 < 0.10
+$$
+
+the consistency of the AHP pairwise comparison matrix is **acceptable**.
+
+
+
 # TOPSIS Analysis Results
 
 ## Original Decision Matrix $X$
