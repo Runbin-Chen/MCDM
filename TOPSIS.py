@@ -69,14 +69,14 @@ X = np.array([
 # =========================
 
 weights = np.array([
-    0.2236,   # Cost
-    0.2407,   # Fuel Efficiency
-    0.0680,   # Performance
-    0.1441,   # Practicality
-    0.0642,   # Utility
-    0.1114,   # Warranty
-    0.0540,   # Environmental Impact
-    0.0940    # Drivability
+    0.2224,   # Cost
+    0.2399,   # Fuel Efficiency
+    0.0683,   # Performance
+    0.1443,   # Practicality
+    0.0645,   # Utility
+    0.1119,   # Warranty
+    0.0542,   # Environmental Impact
+    0.0945    # Drivability
 ])
 
 weights = weights / weights.sum()
